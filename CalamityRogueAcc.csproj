@@ -4,9 +4,16 @@
 	<Import Project="..\tModLoader.targets" />
 	<ItemGroup>
 	  <None Remove="Content\Items\Accessories\CloakingInsignia.png" />
+	  <None Remove="Content\Items\Accessories\Corrupted_Fang.png" />
+	  <None Remove="Content\Items\Accessories\Dagger_Charm.png" />
 	  <None Remove="Content\Items\Accessories\EcliptoothShackle.png" />
+	  <None Remove="Content\Items\Accessories\Flesh_Drive.png" />
 	  <None Remove="Content\Items\Accessories\GloveOfMosaic.png" />
+	  <None Remove="Content\Items\Accessories\Icy_Heart.png" />
+	  <None Remove="Content\Items\Accessories\Lead_Core.png" />
 	  <None Remove="Content\Items\Accessories\SharktoothShackle.png" />
+	  <None Remove="Content\Items\Accessories\Sonic_Arm.png" />
+	  <None Remove="Content\Items\Accessories\VampireboneGlove.png" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Reference Include="CalamityMod">
