@@ -44,7 +44,7 @@ namespace CalamityRogueAcc.Content.Items.Accessories
             CreateRecipe()
                 .AddIngredient<DarksunFragment>()
                 .AddIngredient<SharktoothShackle>()
-                .AddIngredient<UelibloomBar>()
+                .AddIngredient<UelibloomBar>(7)
                 .AddTile<CosmicAnvil>()
                 .Register();
         }
