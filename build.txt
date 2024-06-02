@@ -1,0 +1,4 @@
+displayName = 로그악세
+author = 123
+version = 0.1
+modReferences = CalamityMod

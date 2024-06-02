@@ -1,0 +1,10 @@
+Items: {
+	GloveOfMosaic: {
+		DisplayName: Glove Of Mosaic
+		Tooltip:
+			'''
+			Increases damage by {4}%, crit by {3}%, velocity by {2}% and rogue attack speed by {5}%
+			Stealth strikes also have +{0} armor penetration, deal {1}% more damage
+			'''
+	}
+}
