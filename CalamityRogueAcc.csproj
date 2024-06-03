@@ -14,6 +14,7 @@
 	  <None Remove="Content\Items\Accessories\SharktoothShackle.png" />
 	  <None Remove="Content\Items\Accessories\Sonic_Arm.png" />
 	  <None Remove="Content\Items\Accessories\VampireboneGlove.png" />
+	  <None Remove="TODO_List.txt" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Reference Include="CalamityMod">
