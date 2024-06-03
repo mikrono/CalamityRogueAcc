@@ -1,4 +1,6 @@
-﻿using CalamityMod.Items.Materials;
+﻿using CalamityMod.Items;
+using CalamityMod.Items.Materials;
+using CalamityMod.Rarities;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using System;
 using System.Collections.Generic;
@@ -12,30 +14,42 @@ namespace CalamityRogueAcc.Content.Items.Accessories
 {
     public class EcliptoothShackle : ModItem
     {
+        public static int DefaultDefenseStat = 10;
+        public static int ArmorPenBonus = 15;
+        public static int AttackSpeedBonus = 15;
+        public static int EclipseDamageBonus = 10;
+        public static int EclipseDefenseBonus = 10;
+        public static int DayTimeDamageBonus = 5;
+        public static int NightTimeDefenseBonus = 10;
+
+        //TODO: Formatted Tooltip.
+
         public override void SetDefaults()
         {
             Item.width = 32;
             Item.height = 40;
             Item.accessory = true;
-            Item.defense = 10;
+            Item.rare = ModContent.RarityType<DarkBlue>();
+            Item.value = CalamityGlobalItem.RarityDarkBlueBuyPrice;
+            Item.defense = DefaultDefenseStat;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.GetArmorPenetration<GenericDamageClass>() += 15;
-            player.GetAttackSpeed<GenericDamageClass>() += 15 / 100f;
+            player.GetArmorPenetration<GenericDamageClass>() += ArmorPenBonus;
+            player.GetAttackSpeed<GenericDamageClass>() += AttackSpeedBonus / 100f;
             if (Main.eclipse)
             {
-                player.GetDamage<GenericDamageClass>() += 10 / 100f;
-                player.statDefense += 10;
+                player.GetDamage<GenericDamageClass>() += EclipseDamageBonus / 100f;
+                player.statDefense += EclipseDefenseBonus;
             }
             if (Main.dayTime)
             {
-                player.GetDamage<GenericDamageClass>() += 5 / 100f;
+                player.GetDamage<GenericDamageClass>() += DayTimeDamageBonus / 100f;
             }
             else
             {
-                player.statDefense += 10;
+                player.statDefense += NightTimeDefenseBonus;
             }
         }
 
