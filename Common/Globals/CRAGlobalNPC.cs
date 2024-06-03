@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using Terraria;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace CalamityRogueAcc.Common.Globals
 {
@@ -36,6 +37,10 @@ namespace CalamityRogueAcc.Common.Globals
             if (shop.NpcType == ModContent.NPCType<THIEF>())
             {
                 shop.Add<Dagger_Charm>(Condition.Hardmode);
+            }
+            if (shop.NpcType == NPCID.Steampunker)
+            {
+                shop.Add<Sonic_Arm>(Condition.DownedPlantera);
             }
         }
     }
