@@ -1,4 +1,5 @@
 ﻿using CalamityMod.NPCs.AcidRain;
+using CalamityMod.NPCs.TownNPCs;
 using CalamityRogueAcc.Content.Items.Accessories;
 using System;
 using System.Collections.Generic;
@@ -23,10 +24,19 @@ namespace CalamityRogueAcc.Common.Globals
                 { ModContent.NPCType<CragmawMire>(), new CommonDrop(ModContent.ItemType<Lead_Core>(), 10) }
             };
         }
+
         public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
         {
             if (loots.TryGetValue(npc.type, out IItemDropRule loot))
                 npcLoot.Add(loot);
+        }
+
+        public override void ModifyShop(NPCShop shop)
+        {
+            if (shop.NpcType == ModContent.NPCType<THIEF>())
+            {
+                shop.Add<Dagger_Charm>(Condition.Hardmode);
+            }
         }
     }
 }
