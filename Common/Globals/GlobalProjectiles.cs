@@ -20,7 +20,7 @@ namespace CalamityRogueAcc.Common.Globals
 
         public override void AI(Projectile projectile)
         {
-            if (!EffectFlag)
+            if (EffectFlag)
                 return;
 
             CalamityGlobalProjectile calamityGlobalProjectile = projectile.GetGlobalProjectile<CalamityGlobalProjectile>();
