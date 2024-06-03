@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace CalamityRogueAcc.Content.Items.Accessories
@@ -14,12 +15,15 @@ namespace CalamityRogueAcc.Content.Items.Accessories
         public static readonly int DefenseStat = 2;
         public static readonly int ArmorPenBonus = 5;
 
+        public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(DefenseStat, ArmorPenBonus);
+
         public override void SetDefaults()
         {
-            // TODO: value, rare
             Item.width = 30;
             Item.height = 30;
             Item.accessory = true;
+            Item.rare = ItemRarityID.Green;
+            Item.value = Item.sellPrice(0, 1, 50);
             Item.defense = DefenseStat;
         }
 
