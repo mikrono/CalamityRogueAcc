@@ -16,11 +16,13 @@ namespace CalamityRogueAcc.Common.ModPlayers
     {
         public int StealthStrikeArmorPen = 0;
         public bool leadCore = false;
+        public bool Corrupted_Fang = false;
 
         public override void ResetEffects()
         {
             StealthStrikeArmorPen = 0;
             leadCore = false;
+            Corrupted_Fang = false;
         }
 
         public void NPCDebuffs(NPC target, bool melee, bool ranged, bool magic, bool summon, bool rogue, bool whip, bool proj = false, bool noFlask = false)
