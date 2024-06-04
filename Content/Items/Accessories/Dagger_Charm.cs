@@ -24,7 +24,7 @@ namespace CalamityRogueAcc.Content.Items.Accessories
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.GetModPlayer<AccessoryPlayer>().Dagger_Charm = true;
+            player.GetModPlayer<AccessoryPlayer>().dagger_Charm = true;
         }
     }
 }

@@ -39,7 +39,7 @@ namespace CalamityRogueAcc.Content.Items.Accessories
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.GetModPlayer<AccessoryPlayer>().StealthStrikeArmorPen += RogueStealthStrikeArmorPenBonus;
+            player.GetModPlayer<AccessoryPlayer>().stealthStrikeArmorPen += RogueStealthStrikeArmorPenBonus;
             player.Calamity().bonusStealthDamage += RogueStealthStrikeDamageBonus / 100f;
             player.Calamity().rogueVelocity += RogueVelocityBonus / 100f;
             player.GetDamage<GenericDamageClass>() += GenericDamageBonus / 100f;

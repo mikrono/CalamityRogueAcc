@@ -17,26 +17,26 @@ namespace CalamityRogueAcc.Common.ModPlayers
 {
     public class AccessoryPlayer : ModPlayer
     {
-        public int StealthStrikeArmorPen = 0;
+        public int stealthStrikeArmorPen = 0;
         public bool leadCore = false;
-        public bool Corrupted_Fang = false;
-        public bool Dagger_Charm = false;
-        public bool CloakingInsignia = false;
+        public bool corrupted_Fang = false;
+        public bool dagger_Charm = false;
+        public bool cloakingInsignia = false;
 
         public override void ResetEffects()
         {
-            StealthStrikeArmorPen = 0;
+            stealthStrikeArmorPen = 0;
             leadCore = false;
-            Corrupted_Fang = false;
-            Dagger_Charm = false;
-            CloakingInsignia = false;
+            corrupted_Fang = false;
+            dagger_Charm = false;
+            cloakingInsignia = false;
         }
 
         public override bool Shoot(Item item, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             if (item.CountsAsClass<RogueDamageClass>())
             {
-                if (Player.Calamity().StealthStrikeAvailable() && Dagger_Charm)
+                if (Player.Calamity().StealthStrikeAvailable() && dagger_Charm)
                 {
                     const int knifeCount = 5;
                     const int knifeDamage = 50;

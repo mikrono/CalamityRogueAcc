@@ -32,7 +32,7 @@ namespace CalamityRogueAcc.Content.Items.Accessories
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.GetModPlayer<AccessoryPlayer>().Corrupted_Fang = true;
+            player.GetModPlayer<AccessoryPlayer>().corrupted_Fang = true;
             player.Calamity().rottenDogTooth = true;
             player.Calamity().bonusStealthDamage += StealthDamageBonus / 100f;
         }

@@ -27,7 +27,7 @@ namespace CalamityRogueAcc.Common.Globals
 
             if (projectile.CountsAsClass<RogueDamageClass>() && projectile.Calamity().stealthStrike)
             {
-                projectile.ArmorPenetration += Main.player[projectile.owner].GetModPlayer<AccessoryPlayer>().StealthStrikeArmorPen;
+                projectile.ArmorPenetration += Main.player[projectile.owner].GetModPlayer<AccessoryPlayer>().stealthStrikeArmorPen;
             }
             EffectFlag = true;
         }
@@ -36,7 +36,7 @@ namespace CalamityRogueAcc.Common.Globals
         {
             AccessoryPlayer modPlayer = Main.player[projectile.owner].GetModPlayer<AccessoryPlayer>();
 
-            if (modPlayer.Corrupted_Fang && projectile.Calamity().stealthStrike)
+            if (modPlayer.corrupted_Fang && projectile.Calamity().stealthStrike)
             {
                 target.AddBuff(BuffID.CursedInferno, Corrupted_Fang.CursedInfernoDebuffTime);
             }
