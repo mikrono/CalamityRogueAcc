@@ -17,6 +17,9 @@ namespace CalamityRogueAcc.Content.Items.Accessories
 {
     public class Lead_Core : ModItem
     {
+        public static readonly int DebuffDurationInSec = 5;
+        public static readonly int ExplosionDamage = 800;
+
         public override void SetDefaults()
         {
             Item.width = 26;

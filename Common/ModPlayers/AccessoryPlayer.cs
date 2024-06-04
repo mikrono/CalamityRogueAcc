@@ -84,12 +84,23 @@ namespace CalamityRogueAcc.Common.ModPlayers
 
         public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (proj.CountsAsClass<ThrowingDamageClass>() && icy_Heart)
+            if (!proj.CountsAsClass<ThrowingDamageClass>())
+                return;
+            if (icy_Heart)
             {
                 target.AddBuff(BuffID.Frostburn2, Icy_Heart.DebuffDurationInSec * 60);
             }
 
-            if (proj.CountsAsClass<ThrowingDamageClass>() && vampireboneGlove && proj.Calamity().stealthStrike && Player.lifeSteal > 0f && !Player.moonLeech && target.lifeMax > 5)
+            if (leadCore)
+            {
+                target.AddBuff(BuffType<Irradiated>(), Lead_Core.DebuffDurationInSec * 60);
+                if (proj.Calamity().stealthStrike)
+                {
+                    Projectile.NewProjectile(proj.GetSource_FromThis(), proj.Center, Vector2.Zero, ProjectileType<SulphuricNukesplosion>(), Lead_Core.ExplosionDamage, 2f, Player.whoAmI);
+                }
+            }
+
+            if (vampireboneGlove && proj.Calamity().stealthStrike && Player.lifeSteal > 0f && !Player.moonLeech && target.lifeMax > 5)
             {
                 float LifeStealRange = 3000f;
                 float LifeStealAccessoryCooldownMultiplier = 3f;
