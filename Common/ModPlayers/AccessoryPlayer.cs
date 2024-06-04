@@ -52,7 +52,9 @@ namespace CalamityRogueAcc.Common.ModPlayers
                 {
                     const int knifeCount = 5;
                     const int knifeDamage = 50;
-                    Vector2 BaseVelocity = new(15f * Player.direction, 0);
+                    Vector2 BaseVelocity = velocity;
+                    BaseVelocity.Normalize();
+                    BaseVelocity *= 15f;
 
                     for (int i = 0; i < knifeCount; i++)
                     {
