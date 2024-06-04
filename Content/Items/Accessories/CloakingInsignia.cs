@@ -4,6 +4,7 @@ using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Placeables.Ores;
 using CalamityMod.Rarities;
+using CalamityRogueAcc.Common.ModPlayers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +24,8 @@ namespace CalamityRogueAcc.Content.Items.Accessories
         public static readonly int StealthMaxBonus = 5;
         public static readonly int AggroModifier = -600;
 
-        public static readonly int CloakingCooldown = 40;
+        public static readonly int CloakingBuffDurationInSec = 4;
+        public static readonly int CloakingCooldownInSec = 40;
 
         public override void SetDefaults()
         {
@@ -41,6 +43,7 @@ namespace CalamityRogueAcc.Content.Items.Accessories
             player.Calamity().rogueVelocity += RogueVelocityBonus / 100f;
             player.Calamity().rogueStealthMax += StealthMaxBonus / 100f;
             player.aggro += AggroModifier;
+            player.GetModPlayer<AccessoryPlayer>().cloakingInsignia = true;
         }
 
         public override void AddRecipes()

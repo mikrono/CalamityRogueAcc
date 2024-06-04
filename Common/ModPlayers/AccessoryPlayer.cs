@@ -12,6 +12,11 @@ using static Terraria.ModLoader.ModContent;
 using Terraria.DataStructures;
 using Microsoft.Xna.Framework;
 using CalamityMod.Projectiles.Rogue;
+using Terraria.GameInput;
+using CalamityRogueAcc.Common.Systems;
+using CalamityRogueAcc.Content.Buffs;
+using CalamityRogueAcc.Content.Items.Accessories;
+using CalamityRogueAcc.Content.Cooldowns;
 
 namespace CalamityRogueAcc.Common.ModPlayers
 {
@@ -50,6 +55,15 @@ namespace CalamityRogueAcc.Common.ModPlayers
                 }
             }
             return true;
+        }
+
+        public override void ProcessTriggers(TriggersSet triggersSet)
+        {
+            if (Player.GetModPlayer<AccessoryPlayer>().cloakingInsignia && KeybindSystem.CloakingInsigniaKeybind.JustPressed && !Player.HasCooldown(CloakingInsigniaCooldown.ID))
+            {
+                Player.AddBuff(BuffType<CloakingInsigniaBuff>(), CloakingInsignia.CloakingBuffDurationInSec * 60);
+                Player.AddCooldown(CloakingInsigniaCooldown.ID, CloakingInsignia.CloakingCooldownInSec * 60);
+            }
         }
 
         public void NPCDebuffs(NPC target, bool melee, bool ranged, bool magic, bool summon, bool rogue, bool whip, bool proj = false, bool noFlask = false)
