@@ -12,6 +12,7 @@ using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ID;
+using CalamityMod.NPCs.Cryogen;
 
 namespace CalamityRogueAcc.Common.Globals
 {
@@ -23,7 +24,8 @@ namespace CalamityRogueAcc.Common.Globals
         {
             loots = new()
             {
-                { ModContent.NPCType<CragmawMire>(), new CommonDrop(ModContent.ItemType<Lead_Core>(), 10) }
+                { ModContent.NPCType<CragmawMire>(), new CommonDrop(ModContent.ItemType<Lead_Core>(), 10) },
+                { ModContent.NPCType<Cryogen>(), new CommonDrop(ModContent.ItemType<Icy_Heart>(), 3) },
             };
         }
 
