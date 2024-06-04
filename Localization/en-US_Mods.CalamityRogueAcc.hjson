@@ -7,4 +7,63 @@ Items: {
 			Stealth strikes also have +{0} armor penetration, deal {1}% more damage
 			'''
 	}
+
+	CloakingInsignia: {
+		DisplayName: Cloaking Insignia
+		Tooltip: ""
+	}
+
+	Corrupted_Fang: {
+		DisplayName: Corrupted_ Fang
+		Tooltip: ""
+	}
+
+	Dagger_Charm: {
+		DisplayName: Dagger_ Charm
+		Tooltip: ""
+	}
+
+	EcliptoothShackle: {
+		DisplayName: Ecliptooth Shackle
+		Tooltip: ""
+	}
+
+	Flesh_Drive: {
+		DisplayName: Flesh_ Drive
+		Tooltip: ""
+	}
+
+	Icy_Heart: {
+		DisplayName: Icy_ Heart
+		Tooltip: ""
+	}
+
+	Lead_Core: {
+		DisplayName: Lead_ Core
+		Tooltip: ""
+	}
+
+	SharktoothShackle: {
+		DisplayName: Sharktooth Shackle
+		Tooltip: ""
+	}
+
+	Sonic_Arm: {
+		DisplayName: Sonic_ Arm
+		Tooltip: ""
+	}
+
+	VampireboneGlove: {
+		DisplayName: Vampirebone Glove
+		Tooltip: ""
+	}
+}
+
+Keybinds.CloakingInsigniaKeybind.DisplayName: Cloaking Insignia Keybind
+
+Buffs: {
+	CloakingInsigniaBuff: {
+		DisplayName: Cloaking Insignia Buff
+		Description: Mods.CalamityRogueAcc.Buffs.CloakingInsigniaBuff.Description
+	}
 }
