@@ -17,6 +17,7 @@ using CalamityRogueAcc.Common.Systems;
 using CalamityRogueAcc.Content.Buffs;
 using CalamityRogueAcc.Content.Items.Accessories;
 using CalamityRogueAcc.Content.Cooldowns;
+using Terraria.ID;
 
 namespace CalamityRogueAcc.Common.ModPlayers
 {
@@ -27,6 +28,7 @@ namespace CalamityRogueAcc.Common.ModPlayers
         public bool corrupted_Fang = false;
         public bool dagger_Charm = false;
         public bool cloakingInsignia = false;
+        public bool icy_Heart = false;
 
         public override void ResetEffects()
         {
@@ -35,13 +37,14 @@ namespace CalamityRogueAcc.Common.ModPlayers
             corrupted_Fang = false;
             dagger_Charm = false;
             cloakingInsignia = false;
+            icy_Heart = false;
         }
 
         public override bool Shoot(Item item, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            if (item.CountsAsClass<RogueDamageClass>())
+            if (item.CountsAsClass<RogueDamageClass>() && Player.Calamity().StealthStrikeAvailable())
             {
-                if (Player.Calamity().StealthStrikeAvailable() && dagger_Charm)
+                if (dagger_Charm)
                 {
                     const int knifeCount = 5;
                     const int knifeDamage = 50;
@@ -50,8 +53,17 @@ namespace CalamityRogueAcc.Common.ModPlayers
                     for (int i = 0; i < knifeCount; i++)
                     {
                         Vector2 newVelocity = BaseVelocity.RotatedBy(MathHelper.ToRadians(3 * (i - 2)));
-                        Projectile.NewProjectile(source, Player.Center, newVelocity, ModContent.ProjectileType<VeneratedKnife>(), knifeDamage, 0f, Player.whoAmI);
+                        Projectile.NewProjectile(Entity.GetSource_Accessory((new Dagger_Charm()).Item), position, newVelocity, ModContent.ProjectileType<VeneratedKnife>(), knifeDamage, 0f, Player.whoAmI);
                     }
+                }
+
+                if (icy_Heart)
+                {
+                    Vector2 baseVelocity = velocity;
+                    baseVelocity.Normalize();
+                    int icySpearIndex = Projectile.NewProjectile(Entity.GetSource_Accessory((new Icy_Heart()).Item), position, baseVelocity * 15f, ProjectileID.NorthPoleSpear, (int)(item.damage * Icy_Heart.icySpearDamgeMultiplier), knockback, Player.whoAmI);
+                    Main.projectile[icySpearIndex].aiStyle = ProjAIStyleID.Spear;
+                    Main.projectile[icySpearIndex].penetrate = 1;
                 }
             }
             return true;
@@ -66,6 +78,14 @@ namespace CalamityRogueAcc.Common.ModPlayers
             }
         }
 
+        public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            if (proj.CountsAsClass<ThrowingDamageClass>() && icy_Heart)
+            {
+                target.AddBuff(BuffID.Frostburn2, Icy_Heart.DebuffDurationInSec * 60);
+            }
+        }
+
         public void NPCDebuffs(NPC target, bool melee, bool ranged, bool magic, bool summon, bool rogue, bool whip, bool proj = false, bool noFlask = false)
         {
             if (leadCore)
@@ -73,6 +93,5 @@ namespace CalamityRogueAcc.Common.ModPlayers
                 CalamityUtils.Inflict246DebuffsNPC(target, BuffType<Irradiated>());
             }
         }
-
     }
 }
