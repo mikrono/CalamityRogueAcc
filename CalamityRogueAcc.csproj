@@ -3,6 +3,7 @@
 	<!-- Import tModLoader mod properties -->
 	<Import Project="..\tModLoader.targets" />
 	<ItemGroup>
+	  <None Remove="Content\Buffs\CloakingInsigniaBuff.png" />
 	  <None Remove="Content\Items\Accessories\CloakingInsignia.png" />
 	  <None Remove="Content\Items\Accessories\Corrupted_Fang.png" />
 	  <None Remove="Content\Items\Accessories\Dagger_Charm.png" />
