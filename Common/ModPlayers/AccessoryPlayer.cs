@@ -21,6 +21,7 @@ namespace CalamityRogueAcc.Common.ModPlayers
         public bool leadCore = false;
         public bool Corrupted_Fang = false;
         public bool Dagger_Charm = false;
+        public bool CloakingInsignia = false;
 
         public override void ResetEffects()
         {
@@ -28,6 +29,7 @@ namespace CalamityRogueAcc.Common.ModPlayers
             leadCore = false;
             Corrupted_Fang = false;
             Dagger_Charm = false;
+            CloakingInsignia = false;
         }
 
         public override bool Shoot(Item item, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
