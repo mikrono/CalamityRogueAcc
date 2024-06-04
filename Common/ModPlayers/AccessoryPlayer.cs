@@ -18,6 +18,8 @@ using CalamityRogueAcc.Content.Buffs;
 using CalamityRogueAcc.Content.Items.Accessories;
 using CalamityRogueAcc.Content.Cooldowns;
 using Terraria.ID;
+using CalamityMod.Balancing;
+using CalamityMod.Projectiles;
 
 namespace CalamityRogueAcc.Common.ModPlayers
 {
@@ -29,6 +31,7 @@ namespace CalamityRogueAcc.Common.ModPlayers
         public bool dagger_Charm = false;
         public bool cloakingInsignia = false;
         public bool icy_Heart = false;
+        public bool vampireboneGlove = false;
 
         public override void ResetEffects()
         {
@@ -38,6 +41,7 @@ namespace CalamityRogueAcc.Common.ModPlayers
             dagger_Charm = false;
             cloakingInsignia = false;
             icy_Heart = false;
+            vampireboneGlove = false;
         }
 
         public override bool Shoot(Item item, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
@@ -83,6 +87,14 @@ namespace CalamityRogueAcc.Common.ModPlayers
             if (proj.CountsAsClass<ThrowingDamageClass>() && icy_Heart)
             {
                 target.AddBuff(BuffID.Frostburn2, Icy_Heart.DebuffDurationInSec * 60);
+            }
+
+            if (proj.CountsAsClass<ThrowingDamageClass>() && vampireboneGlove && proj.Calamity().stealthStrike && Player.lifeSteal > 0f && !Player.moonLeech && target.lifeMax > 5)
+            {
+                float LifeStealRange = 3000f;
+                float LifeStealAccessoryCooldownMultiplier = 3f;
+
+                CalamityGlobalProjectile.SpawnLifeStealProjectile(proj, Player, 10, ProjectileID.VampireHeal, LifeStealRange, LifeStealAccessoryCooldownMultiplier);
             }
         }
 
