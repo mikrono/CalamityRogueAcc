@@ -25,8 +25,7 @@ namespace CalamityRogueAcc.Common.Globals
             if (EffectFlag)
                 return;
 
-            CalamityGlobalProjectile calamityGlobalProjectile = projectile.GetGlobalProjectile<CalamityGlobalProjectile>();
-            if (projectile.CountsAsClass<RogueDamageClass>() && calamityGlobalProjectile.stealthStrike)
+            if (projectile.CountsAsClass<RogueDamageClass>() && projectile.Calamity().stealthStrike)
             {
                 projectile.ArmorPenetration += Main.player[projectile.owner].GetModPlayer<AccessoryPlayer>().StealthStrikeArmorPen;
             }
