@@ -15,9 +15,5 @@ namespace CalamityRogueAcc.Content.Buffs
         {
             Main.buffNoSave[Type] = true;
         }
-        public override void Update(Player player, ref int buffIndex)
-        {
-            player.Calamity().rogueStealth = player.Calamity().rogueStealthMax;
-        }
     }
 }

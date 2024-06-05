@@ -77,7 +77,7 @@ namespace CalamityRogueAcc.Common.ModPlayers
 
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
-            if (Player.GetModPlayer<AccessoryPlayer>().cloakingInsignia && KeybindSystem.CloakingInsigniaKeybind.JustPressed && !Player.HasCooldown(CloakingInsigniaCooldown.ID))
+            if (cloakingInsignia && KeybindSystem.CloakingInsigniaKeybind.JustPressed && !Player.HasCooldown(CloakingInsigniaCooldown.ID))
             {
                 Player.AddBuff(BuffType<CloakingInsigniaBuff>(), CloakingInsignia.CloakingBuffDurationInSec * 60);
                 Player.AddCooldown(CloakingInsigniaCooldown.ID, CloakingInsignia.CloakingCooldownInSec * 60);
@@ -108,6 +108,14 @@ namespace CalamityRogueAcc.Common.ModPlayers
                 float LifeStealAccessoryCooldownMultiplier = 3f;
 
                 CalamityGlobalProjectile.SpawnLifeStealProjectile(proj, Player, 10, ProjectileID.VampireHeal, LifeStealRange, LifeStealAccessoryCooldownMultiplier);
+            }
+        }
+
+        public override void PostUpdateEquips()
+        {
+            if (Player.HasBuff<CloakingInsigniaBuff>())
+            {
+                Player.Calamity().rogueStealth = Player.Calamity().rogueStealthMax;
             }
         }
 
